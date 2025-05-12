@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
 </head>
 <body>
   <header>
@@ -14,7 +16,21 @@
       <h1 class="logo">LIXXSHOP.MY.ID</h1>
       <div class="header-actions">
 
-       
+       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+
+      <a href="https://wa.me/601156973637" class="floating-wa" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="produk-label">🔥 Baru</div>
+
+
+
+
         <div id="welcome-popup" class="popup show">
           <div class="popup-content">
             <h2>Selamat Datang di Website <span style="color:#7c3aed">Lixx Shop!</span></h2>
@@ -22,6 +38,188 @@
             <button onclick="closePopup()">Masuk</button>
           </div>
         </div>        
+
+
+        <button id="glow-toggle" class="btn-mode" style="top: 70px;">💡</button>
+
+        <script>
+  document.getElementById("glow-toggle").onclick = () => {
+    document.body.classList.toggle("neon-mode");
+  };
+</script>
+
+<div class="promo-timer">
+  🎁 Promo berakhir dalam: <span id="promo-countdown">--:--:--</span>
+</div>
+
+
+<script>
+  const countdown = document.getElementById("promo-countdown");
+  const end = new Date().getTime() + (3600 * 1000); // 1 jam dari sekarang
+
+  const updateTimer = () => {
+    const now = new Date().getTime();
+    const distance = end - now;
+    if (distance < 0) return countdown.innerText = "00:00:00";
+
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distance % (1000 * 60)) / 1000);
+    countdown.innerText = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+  setInterval(updateTimer, 1000);
+</script>
+
+<audio id="click-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_35634c77e5.mp3" preload="auto"></audio>
+<script>
+  const clickSound = document.getElementById("click-sound");
+  document.querySelectorAll('button, a.btn, .produk-btn').forEach(btn => {
+    btn.addEventListener("click", () => clickSound.play());
+  });
+</script>
+
+        <div id="notif-order" class="notif-order">📦 Seseorang baru saja membeli Jasa Pembuatan Website Medium !</div>
+
+<div id="notif-order" class="notif-order">📦 Seseorang baru saja membeli Jasa Pembuatan Website Medium !</div>
+
+<style>
+.notif-order {
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  background: #1f1b2e;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #7c3aed;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.notif-order.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+</style>
+
+
+<script>
+const fakeOrders = [
+  "📦 Seseorang Baru Saja Membeli Jasa Pembuatan Website Medium !",
+  "💻 Pesanan Website Medium sedang diproses...",
+  "🛒 Jasa Website 1 (Medium) baru saja dibeli!",
+  "📡 Panel 5GB RAM dibeli oleh user dari Bandung!"
+];
+
+function showFakeOrder() {
+  const notif = document.getElementById("notif-order");
+  notif.innerText = fakeOrders[Math.floor(Math.random() * fakeOrders.length)];
+  notif.classList.add("show");
+
+  setTimeout(() => {
+    notif.classList.remove("show");
+  }, 5000); // hilang setelah 5 detik
+}
+
+setInterval(showFakeOrder, 15000); // muncul setiap 15 detik
+</script>
+
+        <div id="preloader">
+  <div class="spinner"></div>
+</div>
+
+<script>
+  window.addEventListener("load", function () {
+    const preloader = document.getElementById("preloader");
+    preloader.style.opacity = "0";
+    preloader.style.transition = "opacity 0.5s ease";
+    setTimeout(() => preloader.style.display = "none", 500);
+  });
+</script>
+
+
+
+
+      <a href="https://wa.me/601156973637" class="floating-wa" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<div class="statistik">
+  <h3><span class="counter" data-count="1500">0</span>+ Panel Terjual</h3>
+</div>
+
+<script>
+let counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+  let updateCount = () => {
+    let target = +counter.getAttribute('data-count');
+    let count = +counter.innerText;
+    let increment = target / 200;
+
+    if (count < target) {
+      counter.innerText = Math.ceil(count + increment);
+      setTimeout(updateCount, 10);
+    } else {
+      counter.innerText = target;
+    }
+  };
+  updateCount();
+});
+</script>
+
+<style>
+.statistik {
+  text-align: center;
+  margin: 40px auto;
+  font-size: 24px;
+  color: #7c3aed;
+}
+</style>
+
+
+<script>
+  const toggleBtn = document.getElementById("toggle-mode");
+  toggleBtn.onclick = () => {
+    document.body.classList.toggle("light-mode");
+    toggleBtn.innerText = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+  };
+</script>
+
+
+
+<div class="testimoni-box" id="testimoni">🗣️ “Pelayanan cepat dan ramah!”</div>
+
+<style>
+.testimoni-box {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  background: #1a1a2e;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #7c3aed;
+}
+</style>
+
+<script>
+const testimonials = [
+  "🗣️ “Pelayanan cepat dan ramah!”",
+  "🗣️ “Panel langsung aktif setelah bayar!”",
+  "🗣️ “Harga paling murah, worth it!”",
+  "🗣️ “Bisa request custom VPS, mantap!”"
+];
+let idx = 0;
+setInterval(() => {
+  document.getElementById("testimoni").innerText = testimonials[idx];
+  idx = (idx + 1) % testimonials.length;
+}, 7000);
+</script>
+
+
 
         <nav>
           <ul>
@@ -51,6 +249,11 @@
       </div>
 
       <section class="panel-list">
+        <div class="statistik">
+  <h3><span class="counter" data-count="1500">1500</span>+ Panel Terjual</h3>
+  <h3><span class="counter" data-count="300">0</span>+ VPS Aktif</h3>
+</div>
+
         <div class="container">
           <h2><i class="fas fa-server"></i> Paket Panel Pterodactyl</h2>
           <div class="panel-buttons">
@@ -212,13 +415,14 @@
   </div>
   </section>
 
-  <section id="kontak" class="kontak">
-    <div class="container">
-      <h2>Hubungi Kami</h2>
-      <p>Chat langsung via WhatsApp:</p>
-      <a href="https://wa.me/601156973637" class="btn">Klik untuk Chat</a>
-    </div>
-  </section>
+<section id="kontak" class="kontak">
+  <div class="container kontak-box">
+    <h2>Hubungi Kami</h2>
+    <p>Chat langsung via WhatsApp:</p>
+    <a href="https://wa.me/601156973637" class="btn">Klik untuk Chat</a>
+  </div>
+</section>
+
 
   <footer>
     <div class="container">
@@ -233,6 +437,7 @@
             popup.style.display = 'none';
           }, 500); // tunggu sampai transisi selesai
         }
+
       </script>      
       
     </div>
